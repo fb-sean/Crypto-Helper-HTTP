@@ -11,6 +11,5 @@ module.exports = (client) => {
   client.talkedRecently = new Set();
 
   /* Logging the bot in. */
-  client.cluster = new Cluster.Client(client);
-  client.login(process.env.TOKEN);
+  client.start(process.env.TOKEN);
 };

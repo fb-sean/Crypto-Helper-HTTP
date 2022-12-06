@@ -14,17 +14,17 @@ module.exports = async (interaction) => {
           botJoined: (Date.now() / 1000) | 0,
           fistCommandUse: (Date.now() / 1000) | 0,
         });
-      } else {}
+      }
 
       const { client } = interaction;
-      if (!interaction.isChatInputCommand()) return;
+      if (!interaction.isCommand()) return;
       const command = client.commands.get(interaction.commandName);
       if (!command) return;
       try {
         command.execute(interaction, client);
       } catch (err) {
         if (err) console.error(err);
-        interaction.reply({
+        return interaction.reply({
           content: 'An error occurred while executing that command.',
           ephemeral: true,
         });
